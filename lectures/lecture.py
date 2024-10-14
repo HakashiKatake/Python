@@ -164,22 +164,14 @@ print(add(10,20,30,40))
 
 
 
+def func_kwargs(**kwargs):
+    print("\n Data type of argument :", type(kwargs))
 
-#Develop a number guessing game using loops and conditional statements. Ask
-#user to guess a secret number. If user has not guessed correct number, provide
-#him/her hint.
-import random
-secret_num = random.randint(1,10)
+    for key, value in kwargs.items():
+        print("{} is {} ".format(key,value))
 
-for i in range(3):
-    guess = int(input("Enter a guess: "))
-    if guess == secret_num:
-        print("You guessed the correct number.")
-        break
-    elif guess > secret_num:
-        print("The secret number is less than your guess.")
-    else:
-        print("The secret number is greater than your guess.")
-else:
-    print("You have used all your guesses.")
-    print("The secret number is", secret_num)
+func_kwargs(name="John", age=25, city="New York")
+func_kwargs(Firstname="John", Lastname="Wood", Email="johnwood@nomail.com", Country="Wakanda", Age=25, Phone=191432657)
+
+
+    
