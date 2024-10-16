@@ -174,4 +174,18 @@ func_kwargs(name="John", age=25, city="New York")
 func_kwargs(Firstname="John", Lastname="Wood", Email="johnwood@nomail.com", Country="Wakanda", Age=25, Phone=191432657)
 
 
-    
+print("")
+print("-----List-----")
+print("")
+
+m = [x for x in range(5,50) if x%2 != 0]
+print(m)
+
+squares = [value**2 for value in range(1,11)]
+print(squares)
+
+list2 = [x for x in range(10) if x < 5]
+print(list2)
+
+
+words = ["Mumbai", ""]
