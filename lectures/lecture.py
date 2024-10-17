@@ -775,6 +775,18 @@ value = 'vowel'
 vowels = {key: value for key in keys}
 print(vowels)
 
+#setdefault() method
+
+person = {'name': 'Phill', 'age': 22}
+age = person.setdefault('age')
+print('person = ',person)
+print('age = ',age)
+
+#
+
+
+
+
 
 
 
