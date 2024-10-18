@@ -26,11 +26,26 @@ Dog.eat(d)
 
 class simple:
     def __init__(self,name):
-        self.name = name
-    def print_name(self):
-        print(self.name)
-obj = simple('John')
-obj.print_name()
+        print("Initializing")
+    def pr(self):
+        print("Sample class")
+        
+obj = simple()
+obj.pr()
+
+#Constructor
+
+class simple:
+    def __init__(self,name):
+        print("Initializing")
+    def pr(self):
+        print("Sample class")
+        
+obj = simple()
+obj = simple()
+obj.pr()
+
+
 
 
 #ex init method
