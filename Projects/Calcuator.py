@@ -1,68 +1,47 @@
-#Simple GUI calculator using Tkinter
+import tkinter as tk
 
-import tkinter
-from tkinter import *
+def button_click(number):
+    current = entry.get()
+    entry.delete(0, tk.END)
+    entry.insert(0, current + str(number))
 
-root = Tk() #creating a window
-root.title("Calculator")
-root.geometry("400x400")
-root.resizable(0,0)
-root.configure(bg = "powder blue")
+def clear():
+    entry.delete(0, tk.END)
 
-e = Entry(root, width = 50, borderwidth = 5)
-e.grid(row = 0, column = 0, columnspan = 3, padx = 10, pady = 10)
+def calculate():
+    try:
+        result = eval(entry.get())
+        entry.delete(0, tk.END)
+        entry.insert(0, str(result))
+    except Exception as e:
+        entry.delete(0, tk.END)
+        entry.insert(0, "Error")
 
-def button_click(number):   
-    current = e.get()
-    e.delete(0, END)
-    e.insert(0, str(current) + str(number))
 
-def button_clear():
-    e.delete(0, END)
+root = tk.Tk()
+root.title("Simple Calculator")
 
-def button_add():   
-    first_number = e.get()
-    global f_num    
-    global math
-    math = "addition"
-    f_num = int(first_number)
-    e.delete(0, END)
 
-def button_equal():
-    second_number = e.get()
-    e.delete(0, END)
-    if math == "addition":
-        e.insert(0, f_num + int(second_number))
-    if math == "subtraction":
-        e.insert(0, f_num - int(second_number))
-    if math == "multiplication":
-        e.insert(0, f_num * int(second_number))
-    if math == "division":
-        e.insert(0, f_num / int(second_number))
+entry = tk.Entry(root, width=35, borderwidth=5, justify="right")
+entry.grid(row=0, column=0, columnspan=4, padx=10, pady=10)
 
-def button_subtract():   
-    first_number = e.get()
-    global f_num    
-    global math
-    math = "subtraction"
-    f_num = int(first_number)
-    e.delete(0, END)    
 
-def button_multiply():   
-    first_number = e.get()
-    global f_num    
-    global math
-    math = "multiplication"
-    f_num = int(first_number)   
-    e.delete(0, END)
+buttons = [
+    ('7', 1, 0), ('8', 1, 1), ('9', 1, 2), ('/', 1, 3),
+    ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('*', 2, 3),
+    ('1', 3, 0), ('2', 3, 1), ('3', 3, 2), ('-', 3, 3),
+    ('C', 4, 0), ('0', 4, 1), ('=', 4, 2), ('+', 4, 3)
+]
 
-def button_divide():
-    first_number = e.get()
-    global f_num    
-    global math
-    math = "division"
-    f_num = int(first_number)   
-    e.delete(0, END)
 
-button_1 = Button(root, text = "1", padx = 40, pady = 20, command = lambda: button_click(1))
+for (text, row, col) in buttons:
+    if text == 'C':
+        button = tk.Button(root, text=text, padx=20, pady=20, command=clear)
+    elif text == '=':
+        button = tk.Button(root, text=text, padx=20, pady=20, command=calculate)
+    else:
+        button = tk.Button(root, text=text, padx=20, pady=20, command=lambda t=text: button_click(t))
+    button.grid(row=row, column=col)
 
+
+root.mainloop()
